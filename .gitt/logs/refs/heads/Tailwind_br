@@ -1,6 +1,0 @@
-0000000000000000000000000000000000000000 b694ddf75a450668b2e6e533ef2ac56e4136d673 isma <ismael.punu@opt.pf> 1739315952 -1000	branch: Created from HEAD
-b694ddf75a450668b2e6e533ef2ac56e4136d673 efdf90703e4da29794925ebc4945d2928ba67103 isma <ismael.punu@opt.pf> 1739408103 -1000	commit: feat: Tailwindcss integration
-efdf90703e4da29794925ebc4945d2928ba67103 5c3f2a531dcdc9bcea5bdddb9d0b31c5cb868b56 isma <ismael.punu@opt.pf> 1739467301 -1000	commit: feat: tailwindcss configuration
-5c3f2a531dcdc9bcea5bdddb9d0b31c5cb868b56 1c9e7bb289e5f4db6c72cf11ea239507f9c263b3 isma <ismael.punu@opt.pf> 1739818070 -1000	commit: feat: vitejs + react + tailwindcss frontend integration
-1c9e7bb289e5f4db6c72cf11ea239507f9c263b3 26ccec891dcd2dce1035a34b39d2f49b44823884 isma <ismael.punu@opt.pf> 1739825905 -1000	commit: feat: frontend admin status update
-26ccec891dcd2dce1035a34b39d2f49b44823884 249492dba7d912a5569b232dd41c14d8caaf0074 isma <ismael.punu@opt.pf> 1739835618 -1000	commit: feat: add page refresh functionality and pagination system
