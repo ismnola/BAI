@@ -1,0 +1,70 @@
+# Fichier .gitlab-ci.yml
+
+# Inclusion de fichiers de configuration externes pour l'authentification et les paramètres de déploiement
+include:
+  - project: 'misc/templates'
+    ref: master
+    file: auth_gitlab_registry.yml  # Contient les informations d'authentification pour le registre de conteneurs
+  - project: 'misc/templates'
+    ref: master
+    file: auth-deploy-settings-holding.yml  # Contient les paramètres de déploiement pour l'environnement "holding"
+
+# Image Docker utilisée comme environnement d'exécution pour les jobs
+image: docker:git
+
+# Service Docker in Docker pour exécuter des commandes Docker dans le pipeline
+services:
+  - docker:dind
+
+# Définition des différentes étapes du pipeline
+stages:
+  - build  # Étape de construction de l'image Docker
+  - deploy  # Étape de déploiement de l'image Docker
+
+# Variables globales utilisées dans le pipeline
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive  # Stratégie de clonage des sous-modules Git
+  GIT_SSL_NO_VERIFY: "1"  # Désactive la vérification SSL pour Git (à utiliser avec précaution)
+  SERVICE_NAME: ws_sagex3  # Nom du service à déployer
+  http_proxy: $PROXY_SERVER  # Configuration du proxy HTTP
+  https_proxy: $PROXY_SERVER  # Configuration du proxy HTTPS
+  no_proxy: .opt.intranet  # Liste des domaines à exclure du proxy
+  CONTAINER_IMAGE: ${CI_REGISTRY_IMAGE}  # Chemin complet de l'image Docker
+
+# Job de construction de l'image Docker
+docker-build:
+  stage: build  # Ce job appartient à l'étape "build"
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY  # Authentification au registre de conteneurs
+  script:
+    - echo "CONTAINER_IMAGE=${CONTAINER_IMAGE}"  # Affiche le chemin de l'image pour débogage
+    - echo "$ADDITIONAL_CA_CERT_BUNDLE" > "${CI_PROJECT_DIR}/ca_opt.crt"  # Ajoute un certificat CA
+    - >  # Commande Docker pour construire l'image
+        docker build \
+          --tag ${CONTAINER_IMAGE}:${CI_COMMIT_SHORT_SHA} \
+          --tag ${CONTAINER_IMAGE}:latest \
+          --build-arg http_proxy=$PROXY_SERVER \
+          --build-arg https_proxy=$PROXY_SERVER \
+          --build-arg no_proxy=$no_proxy . 
+    - docker push ${CONTAINER_IMAGE}:latest  # Pousse l'image vers le registre
+    - docker push ${CONTAINER_IMAGE}:${CI_COMMIT_SHORT_SHA}  # Pousse l'image avec le hash de commit
+
+# Template réutilisable pour les tâches de déploiement
+.docker-deploy: &docker-deploy
+  extends: .auth-deploy-service  # Hérite des configurations d'un autre template
+  variables:
+    GITLAB_STRATEGY: none
+
+# Job de déploiement sur l'environnement de staging
+deploy-staging:
+  stage: deploy  # Ce job appartient à l'étape "deploy"
+  variables:
+    GIT_STRATEGY: none
+    SERVICE_NAME: ws_sagex3
+    DOCKER_HOST: ssh://root@172.31.4.120  # Adresse du serveur Docker distant
+    CONTAINER_IMAGE: ${CI_REGISTRY_IMAGE}
+  before_script:
+    # Configuration de l'environnement pour se connecter au serveur distant
+    - # ...
+  script:
+    - docker service update --image ${CONTAINER_IMAGE}:latest --with-registry-auth ${SERVICE_NAME}  # Mise à jour du service Docker

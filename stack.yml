@@ -1,0 +1,65 @@
+version: "3.9"
+services:
+
+  web:
+    image: gitlab.opt.intranet:4567/dmg/boite-a-idees/web
+    deploy:
+      labels:
+        "traefik.enable": "true"
+        "traefik.http.routers.bai.rule": Host("bai.dev.opt.intranet")
+        "traefik.http.routers.bai.tls": "true"
+        "traefik.http.routers.bai.tls.certresolver": "smallstep"
+        "traefik.http.services.bai.loadbalancer.server.port": "80"
+    depends_on:
+      - php
+      - mariadb
+    networks:
+      - traefik-net
+      - default
+
+
+  php:
+    image: gitlab.opt.intranet:4567/dmg/boite-a-idees/php
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: BoiteAIdees
+      MYSQL_USER: optuser
+      MYSQL_PASSWORD: optpassword
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    deploy:
+      labels:
+        "traefik.enable": "true"
+        "traefik.http.routers.bai-pmi.rule": Host("bai.dev.opt.intranet") && PathPrefix("/pmi")
+        "traefik.http.routers.bai-pmi.tls": "true"
+        "traefik.http.routers.bai-pmi.tls.certresolver": "smallstep"
+        "traefik.http.routers.bai-pmi.middlewares": "admin-stripprefix"
+        "traefik.http.middlewares.admin-stripprefix.stripprefix.prefixes": "/pmi"
+        "traefik.http.services.bai-pmi.loadbalancer.server.port": "80"
+
+    environment:
+      PMA_HOST: mariadb
+      PMA_ABSOLUTE_URI: "https://bai.dev.opt.intranet/pmi/"
+      MYSQL_ROOT_PASSWORD: password
+      
+    depends_on:
+      - mariadb
+    networks:
+      - traefik-net
+      - default      
+
+volumes:
+  mariadb_data: 
+    external: true
+    name: "boite_a_ideev4"
+networks:
+  traefik-net:
+    external: true

@@ -1,0 +1,41 @@
+stages:
+  - build
+
+variables:
+  http_proxy: $PROXY_SERVER  # Configuration du proxy HTTP
+  https_proxy: $PROXY_SERVER  # Configuration du proxy HTTPS
+  no_proxy: .opt.intranet  # Liste des domaines à exclure du proxy
+
+build_web:
+  stage: build
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - echo "CONTAINER_IMAGE=${CI_REGISTRY_IMAGE}"
+    - >  # Commande Docker pour construire l'image
+        docker build \
+          --tag ${CI_REGISTRY_IMAGE}/web:${CI_COMMIT_SHORT_SHA} \
+          --tag ${CI_REGISTRY_IMAGE}/web:latest \
+          --build-arg http_proxy=$PROXY_SERVER \
+          --build-arg https_proxy=$PROXY_SERVER \
+          --build-arg no_proxy=$no_proxy --file Dockerfile.nginx .
+    - docker push ${CI_REGISTRY_IMAGE}/web:latest  # Pousse l'image vers le registre
+    - docker push ${CI_REGISTRY_IMAGE}/web:${CI_COMMIT_SHORT_SHA}
+  
+# CONTAINER_IMAGE=gitlab.opt.intranet:4567/dmg/boite-a-idees
+
+build_php:
+  stage: build
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - echo "CONTAINER_IMAGE=${CI_REGISTRY_IMAGE}"
+    - >  # Commande Docker pour construire l'image
+        docker build \
+          --tag ${CI_REGISTRY_IMAGE}/php:${CI_COMMIT_SHORT_SHA} \
+          --tag ${CI_REGISTRY_IMAGE}/php:latest \
+          --build-arg http_proxy=$PROXY_SERVER \
+          --build-arg https_proxy=$PROXY_SERVER \
+          --build-arg no_proxy=$no_proxy --file Dockerfile.php .
+    - docker push ${CI_REGISTRY_IMAGE}/php:latest  # Pousse l'image vers le registre
+    - docker push ${CI_REGISTRY_IMAGE}/php:${CI_COMMIT_SHORT_SHA}

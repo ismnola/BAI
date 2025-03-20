@@ -1,0 +1,18 @@
+0000000000000000000000000000000000000000 769a251d8f7b8c6c96f60173c4ea143df75eb5e0 ismael punu <ismael.punu@opt.pf> 1737750403 -1000	commit (initial): first commit
+769a251d8f7b8c6c96f60173c4ea143df75eb5e0 33a338734a6512af4de867ad49f2a23f0d56bccc ismael punu <ismael.punu@opt.pf> 1738112614 -1000	commit: test_cicd
+33a338734a6512af4de867ad49f2a23f0d56bccc 4ac49789910739db7b7262c06a58bd24d89255ea ismael punu <ismael.punu@opt.pf> 1738176316 -1000	commit: test_pipeline_build
+4ac49789910739db7b7262c06a58bd24d89255ea bf812a30d343327599dc8d6b553c11a5ec79efd5 ismael punu <ismael.punu@opt.pf> 1738177311 -1000	commit: pipeline-build-only
+bf812a30d343327599dc8d6b553c11a5ec79efd5 0f7a2506875ddb795ee51a1d04539354b11b83e3 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738182167 -1000	commit: update-gitignore
+0f7a2506875ddb795ee51a1d04539354b11b83e3 3ce69362c41fd3dec68c79f871b5562700abef88 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738182639 -1000	pull: Merge made by the 'ort' strategy.
+3ce69362c41fd3dec68c79f871b5562700abef88 6a7521745e7b569e02068a2c6a16b43b5b973481 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738183029 -1000	commit: update-conf
+6a7521745e7b569e02068a2c6a16b43b5b973481 a4653928d515a6a69f79c84545228b9f59119dfd Ismaël PUNU <Ismael.PUNU@opt.pf> 1738183248 -1000	commit: update-conf2
+a4653928d515a6a69f79c84545228b9f59119dfd 57aef098d4a48e83ea03d7ac687085818a76c101 isma <ismael.punu@opt.pf> 1738690289 -1000	pull --tags origin master: Fast-forward
+57aef098d4a48e83ea03d7ac687085818a76c101 d857daa3ebde51674314896064c43f99b306e2c6 isma <ismael.punu@opt.pf> 1739314294 -1000	commit: feat: nodejs integration docker
+d857daa3ebde51674314896064c43f99b306e2c6 92c9854b0256c3c0597782e3e555a73696d68f22 isma <ismael.punu@opt.pf> 1739314444 -1000	commit: feat: expresjs backend migration
+92c9854b0256c3c0597782e3e555a73696d68f22 b694ddf75a450668b2e6e533ef2ac56e4136d673 isma <ismael.punu@opt.pf> 1739315529 -1000	commit: feat: reactjs frontend migration
+b694ddf75a450668b2e6e533ef2ac56e4136d673 845b6ed13a6ee9a80dc345c566e082eabd10cbf6 isma <ismael.punu@opt.pf> 1739837047 -1000	pull --tags origin master: Fast-forward
+845b6ed13a6ee9a80dc345c566e082eabd10cbf6 a398ae3eac5b46f73a6505556c748d55e2ce3e7e isma <ismael.punu@opt.pf> 1739838918 -1000	commit: feat: frontend react js +vite js + tailwind docker integration
+a398ae3eac5b46f73a6505556c748d55e2ce3e7e 3724c3b858d8a53def3ce0c10f8ca29354db49b9 isma <ismael.punu@opt.pf> 1739908493 -1000	commit: fix: 2 frontends 2 containers
+3724c3b858d8a53def3ce0c10f8ca29354db49b9 fb4a63363e29c6d0e0911d5d2b9a04b1fef2a2c7 isma <ismael.punu@opt.pf> 1740001718 -1000	commit: feat: Expres.js local middleware authentification
+fb4a63363e29c6d0e0911d5d2b9a04b1fef2a2c7 c8dfb5c75ddbd1c231c7588ee341327bea0e4861 isma <ismael.punu@opt.pf> 1740002481 -1000	commit: fix: gitignore node_modules
+c8dfb5c75ddbd1c231c7588ee341327bea0e4861 7b7ed9c78632be383dd18436a2ceced14476d963 isma <ismael.punu@opt.pf> 1740101134 -1000	commit: feat: UX button tailwindcss

@@ -1,0 +1,28 @@
+/BOITE-A-IDEES/
+|
+├── docker-compose.yml
+|
+├── Dockerfiles
+│
+├── .gitlab-ci.yml
+│
+├── README.md
+│
+├────── backend/
+│       ├── src/
+│       ├── package.json
+│       └── .gitignore
+│
+├────── frontend-admin/
+│       ├── src/
+│       ├── public/
+│       ├── package.json
+│       └── .gitignore
+│
+└────── frontend-user/
+        ├── src/
+        ├── public/
+        ├── package.json
+        └── .gitignore
+
+

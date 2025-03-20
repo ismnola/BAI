@@ -1,0 +1,17 @@
+0000000000000000000000000000000000000000 a4653928d515a6a69f79c84545228b9f59119dfd Ismaël PUNU <Ismael.PUNU@opt.pf> 1738183392 -1000	branch: Created from refs/remotes/origin/DEV
+a4653928d515a6a69f79c84545228b9f59119dfd 6f5f2bf8e2a31aca8228085b2d17409e9fdbf07a Ismaël PUNU <Ismael.PUNU@opt.pf> 1738183835 -1000	commit: testconf
+6f5f2bf8e2a31aca8228085b2d17409e9fdbf07a b8f7412e85e51a87999eee328845aae3c2da34f1 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738183886 -1000	commit (merge): testconf
+b8f7412e85e51a87999eee328845aae3c2da34f1 1242e6308f6aef5297d78176932797d75d626210 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738194532 -1000	commit: testignore
+1242e6308f6aef5297d78176932797d75d626210 f7a5427e81fe31ddfd45197bbe0faa405773e5fd Ismaël PUNU <Ismael.PUNU@opt.pf> 1738268059 -1000	commit: test-runner
+f7a5427e81fe31ddfd45197bbe0faa405773e5fd 5ae7841ee603e9ff4d9117fed43c8ee13ae4132b Ismaël PUNU <Ismael.PUNU@opt.pf> 1738268523 -1000	commit: update-gitlab-ci
+5ae7841ee603e9ff4d9117fed43c8ee13ae4132b b071d3aa53e51aca31b0b5e5b3eeb880cf08b078 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738269345 -1000	commit: update-dockerfile
+b071d3aa53e51aca31b0b5e5b3eeb880cf08b078 dbab9b210c455927478cd41941d0d39ae30960a8 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738269983 -1000	pull: Fast-forward
+dbab9b210c455927478cd41941d0d39ae30960a8 c996a97ec4e5889a9a70c826dfe890eb8fa8bbe6 Ismaël PUNU <Ismael.PUNU@opt.pf> 1738269999 -1000	commit: update-dockerfile1
+c996a97ec4e5889a9a70c826dfe890eb8fa8bbe6 92d10f568de8106f631ad8aeeb8c82e5f7ae568e Ismaël PUNU <Ismael.PUNU@opt.pf> 1738270163 -1000	commit: update-dockerfile2
+92d10f568de8106f631ad8aeeb8c82e5f7ae568e 3501495554df3e2499489cfecc38e9f53fe7c1ec Ismaël PUNU <Ismael.PUNU@opt.pf> 1738270369 -1000	commit: update-gitlab-ci1
+3501495554df3e2499489cfecc38e9f53fe7c1ec 740a5344372903738bda5f2999e25a237d978cac isma <ismael.punu@opt.pf> 1738348460 -1000	commit: fix: test-echo
+740a5344372903738bda5f2999e25a237d978cac 9764cd5853225bf1eca800d5007bae44c744bbea isma <ismael.punu@opt.pf> 1738348644 -1000	commit: fix: echo image variable
+9764cd5853225bf1eca800d5007bae44c744bbea 53f6385839d6a07477992cf79ac9b5a72ec11034 isma <ismael.punu@opt.pf> 1738349268 -1000	commit: feat: first build
+53f6385839d6a07477992cf79ac9b5a72ec11034 6f98372f70f05ff954d786397161ed334c121b59 isma <ismael.punu@opt.pf> 1738349560 -1000	commit: fix: set web dockerfile
+6f98372f70f05ff954d786397161ed334c121b59 f898d50eeae09dc78f6efc214157a735dce73ffe isma <ismael.punu@opt.pf> 1738350271 -1000	commit: fix: change image name
+f898d50eeae09dc78f6efc214157a735dce73ffe be82b67cc9143e3429a345356960667e31a69eef isma <ismael.punu@opt.pf> 1738690267 -1000	pull --tags origin DEV: Fast-forward

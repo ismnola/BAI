@@ -1,0 +1,56 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: BoiteAIdees
+      MYSQL_USER: optuser
+      MYSQL_PASSWORD: optpassword
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: password
+    depends_on:
+      - mariadb
+
+  expressapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.express
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mariadb
+
+  reactuser:
+    build:
+      context: .
+      dockerfile: Dockerfile.reactuser
+    ports:
+      - "3001:80"
+    depends_on:
+      - expressapp
+
+  reactadmin:
+    build:
+      context: .
+      dockerfile: Dockerfile.reactadmin
+    ports:
+      - "3002:80"
+    depends_on:
+      - expressapp
+      - reactuser
+
+volumes:
+  mariadb_data: 
+    external: true
+    name: "boite_a_ideev4"
