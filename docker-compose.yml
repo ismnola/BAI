@@ -53,4 +53,4 @@ services:
 volumes:
   mariadb_data: 
     external: true
-    name: "boite_a_ideev4"
+    name: "BoiteAIdees"
